@@ -1,0 +1,74 @@
+---
+---
+<div class="social-bar">
+    <div class="social-inner">
+        <a href="https://github.com/Isen-Osman" target="_blank" aria-label="GitHub">
+            <i class="ph-fill ph-github-logo"></i>
+            <span>GitHub</span>
+        </a>
+        <a href="https://linkedin.com/in/YOUR_PROFILE" target="_blank" aria-label="LinkedIn">
+            <i class="ph-fill ph-linkedin-logo"></i>
+            <span>LinkedIn</span>
+        </a>
+        <a href="https://instagram.com/YOUR_PROFILE" target="_blank" aria-label="Instagram">
+            <i class="ph-fill ph-instagram-logo"></i>
+            <span>Instagram</span>
+        </a>
+        <a href="https://facebook.com/YOUR_PROFILE" target="_blank" aria-label="Facebook">
+            <i class="ph-fill ph-facebook-logo"></i>
+            <span>Facebook</span>
+        </a>
+        <a href="mailto:hello@isen.dev" aria-label="Email">
+            <i class="ph-fill ph-envelope"></i>
+            <span>Email</span>
+        </a>
+    </div>
+</div>
+
+<style>
+    .social-bar {
+        width: 100%;
+        background: var(--bg2);
+        border-bottom: 1px solid var(--line);
+        padding: 8px 48px;
+        display: flex;
+        justify-content: flex-end;
+        position: sticky;
+        top: 0;
+        z-index: 101;
+    }
+
+    @media (max-width: 768px) {
+        .social-bar {
+            justify-content: center;
+            padding: 8px 24px;
+        }
+        .social-bar span { display: none; }
+    }
+
+    .social-inner {
+        display: flex;
+        gap: 24px;
+    }
+
+    .social-bar a {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        color: var(--muted);
+        text-decoration: none;
+        font-family: 'DM Mono', monospace;
+        font-size: 0.7rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        transition: color 0.2s;
+    }
+
+    .social-bar a:hover {
+        color: var(--accent);
+    }
+
+    .social-bar i {
+        font-size: 1.1rem;
+    }
+</style>

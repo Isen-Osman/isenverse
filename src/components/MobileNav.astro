@@ -1,0 +1,118 @@
+---
+---
+<div class="mobile-nav">
+    <div class="mobile-nav-inner">
+        <a href="#hero" class="mobile-nav-item active" data-section="hero">
+            <i class="ph-bold ph-house"></i>
+            <span>Home</span>
+        </a>
+        <a href="#about" class="mobile-nav-item" data-section="about">
+            <i class="ph-bold ph-user"></i>
+            <span>About</span>
+        </a>
+        <a href="#skills" class="mobile-nav-item" data-section="skills">
+            <i class="ph-bold ph-code"></i>
+            <span>Skills</span>
+        </a>
+        <a href="#projects" class="mobile-nav-item" data-section="projects">
+            <i class="ph-bold ph-briefcase"></i>
+            <span>Work</span>
+        </a>
+        <a href="#contact" class="mobile-nav-item" data-section="contact">
+            <i class="ph-bold ph-chat-circle-dots"></i>
+            <span>Contact</span>
+        </a>
+    </div>
+</div>
+
+<style>
+    .mobile-nav {
+        position: fixed;
+        bottom: 24px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: calc(100% - 48px);
+        max-width: 400px;
+        background: rgba(19, 19, 26, 0.85);
+        backdrop-filter: blur(12px);
+        border: 1px solid var(--line);
+        border-radius: 24px;
+        padding: 8px;
+        z-index: 1000;
+        display: none;
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+    }
+
+    @media (max-width: 768px) {
+        .mobile-nav { display: block; }
+    }
+
+    .mobile-nav-inner {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    .mobile-nav-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 4px;
+        color: var(--muted);
+        text-decoration: none;
+        padding: 8px 12px;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+    }
+
+    .mobile-nav-item i {
+        font-size: 1.4rem;
+    }
+
+    .mobile-nav-item span {
+        font-size: 0.65rem;
+        font-family: 'DM Mono', monospace;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+
+    .mobile-nav-item.active {
+        color: var(--accent);
+        transform: translateY(-4px);
+    }
+
+    .mobile-nav-item.active::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        width: 4px;
+        height: 4px;
+        background: var(--accent);
+        border-radius: 50%;
+        box-shadow: 0 0 10px var(--accent);
+    }
+</style>
+
+<script>
+    const navItems = document.querySelectorAll('.mobile-nav-item');
+    const sections = document.querySelectorAll('section[id]');
+
+    window.addEventListener('scroll', () => {
+        let current = '';
+        sections.forEach(section => {
+            const sectionTop = (section as HTMLElement).offsetTop;
+            const sectionHeight = section.clientHeight;
+            if (window.scrollY >= sectionTop - 150) {
+                current = section.getAttribute('id') || '';
+            }
+        });
+
+        navItems.forEach(item => {
+            item.classList.remove('active');
+            if (item.getAttribute('data-section') === current) {
+                item.classList.add('active');
+            }
+        });
+    });
+</script>
