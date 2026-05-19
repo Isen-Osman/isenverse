@@ -5,4 +5,7 @@ export default defineConfig({
   site: 'https://Isen-Osman.github.io',
   base: '/isenverse', // Exact name of your GitHub repository
   outDir: './dist',
+  devToolbar: {
+    enabled: false
+  }
 });

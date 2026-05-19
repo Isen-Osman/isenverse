@@ -19,13 +19,30 @@ const { title } = Astro.props;
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Mono:ital,wght@0,300;0,400;1,300&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;1,9..40,300&display=swap" rel="stylesheet" />
         <script src="https://unpkg.com/@phosphor-icons/web"></script>
+        <script is:inline>
+            const theme = (() => {
+                if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
+                    return localStorage.getItem('theme');
+                }
+                if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                    return 'dark';
+                }
+                return 'light';
+            })();
+
+            if (theme === 'light') {
+                document.documentElement.setAttribute('data-theme', 'light');
+            } else {
+                document.documentElement.setAttribute('data-theme', 'dark');
+            }
+        </script>
         <style>
             /* Global Mouse Glow */
             .mouse-glow {
                 position: fixed;
                 width: 600px;
                 height: 600px;
-                background: radial-gradient(circle, rgba(124, 255, 212, 0.08) 0%, transparent 70%);
+                background: radial-gradient(circle, color-mix(in srgb, var(--accent), transparent 92%) 0%, transparent 70%);
                 border-radius: 50%;
                 pointer-events: none;
                 z-index: 1;
@@ -60,15 +77,31 @@ const { title } = Astro.props;
 		--accent: #7cffd4;
 		--accent2: #4f8eff;
 		--accent3: #ff6b6b;
+		--accent4: #a78bfa;
 		--text: #e8e8f0;
 		--muted: #6b6b80;
 		--card: #13131a;
 	}
 
+    :root[data-theme="light"] {
+        --bg: #ffffff;
+        --bg2: #fcfcfc;
+        --bg3: #f5f5f5;
+        --line: #0000000d;
+        --accent: #000000;
+        --accent2: #333333;
+        --accent3: #555555;
+        --accent4: #777777;
+        --text: #000000;
+        --muted: #666666;
+        --card: #ffffff;
+    }
+
 	*, *::before, *::after {
 		box-sizing: border-box;
 		margin: 0;
 		padding: 0;
+        transition: background-color 0.4s ease, border-color 0.4s ease, color 0.4s ease, box-shadow 0.4s ease;
 	}
 
 	html {
@@ -169,7 +202,7 @@ const { title } = Astro.props;
 	.btn-primary:hover {
 		background: #fff;
 		transform: translateY(-2px);
-		box-shadow: 0 8px 32px #7cffd430;
+		box-shadow: 0 8px 32px color-mix(in srgb, var(--accent), transparent 80%);
 	}
 
 	.btn-ghost {
@@ -232,3 +265,4 @@ const { title } = Astro.props;
 		});
 	});
 </script>
+t>

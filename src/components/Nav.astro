@@ -1,13 +1,21 @@
 ---
+import ThemeToggle from './ThemeToggle.astro';
 ---
 <nav>
-    <a href="#hero" class="logo">IS<span>.</span></a>
+    <a href="#hero" class="logo">
+        <span class="first-letter">I</span><span class="logo-hidden">SEN</span>
+        <span class="last-letter">O</span><span class="logo-hidden">SMAN</span>
+        <span class="dot">.</span>
+    </a>
     <ul>
         <li><a href="#about">About</a></li>
         <li><a href="#skills">Skills</a></li>
         <li><a href="#projects">Projects</a></li>
         <li><a href="#contact">Contact</a></li>
     </ul>
+    <div class="nav-right">
+        <ThemeToggle />
+    </div>
 </nav>
 
 <style>
@@ -27,13 +35,44 @@
     .logo {
         font-family: 'Syne', sans-serif;
         font-weight: 800;
-        font-size: 1.2rem;
+        font-size: 1.3rem;
         letter-spacing: -0.02em;
         color: var(--text);
         text-decoration: none;
+        display: flex;
+        align-items: baseline;
+        overflow: hidden;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
-    .logo span { color: var(--accent); }
+    .logo-hidden {
+        max-width: 0;
+        opacity: 0;
+        display: inline-block;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        font-size: 0.8em;
+        font-weight: 700;
+        color: var(--muted);
+        white-space: nowrap;
+    }
+
+    .logo:hover .logo-hidden {
+        max-width: 100px;
+        opacity: 1;
+        margin-right: 4px;
+    }
+
+    .logo .dot { color: var(--accent); transition: transform 0.4s ease; }
+    .logo:hover .dot { transform: translateX(4px); }
+
+    .first-letter, .last-letter {
+        color: var(--text);
+        position: relative;
+    }
+
+    .logo:hover .first-letter, .logo:hover .last-letter {
+        color: var(--accent);
+    }
 
     nav ul {
         display: flex;
@@ -53,7 +92,33 @@
 
     nav a:hover { color: var(--accent); }
 
+    .nav-right {
+        display: flex;
+        align-items: center;
+    }
+
     @media (max-width: 768px) {
-        nav { display: none; }
+        nav {
+            padding: 15px 24px;
+            top: 37px;
+        }
+        nav ul {
+            display: none;
+        }
+        .logo {
+            font-size: 1.1rem;
+        }
     }
 </style>
+
+<script>
+    const logo = document.querySelector('.logo');
+    if (logo) {
+        logo.addEventListener('touchstart', (e) => {
+            logo.classList.add('active');
+            setTimeout(() => {
+                logo.classList.remove('active');
+            }, 2000);
+        });
+    }
+</script>
