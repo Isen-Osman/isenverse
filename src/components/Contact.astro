@@ -1,0 +1,146 @@
+---
+---
+<section id="contact">
+    <div class="section-label">Let's connect</div>
+    <h2>Get in<br/>Touch</h2>
+    <div class="contact-grid reveal">
+        <div class="contact-info">
+            <p>I'm always open to interesting projects, collaborations, or just a good conversation about tech and markets.</p>
+            <div class="contact-links">
+                <a href="https://github.com/Isen-Osman" target="_blank" class="contact-link">
+                    <span class="contact-link-icon">🐙</span>
+                    <span>GitHub</span>
+                    <span class="contact-link-label">Isen-Osman →</span>
+                </a>
+                <a href="https://hub.docker.com/" target="_blank" class="contact-link">
+                    <span class="contact-link-icon">🐳</span>
+                    <span>Docker Hub</span>
+                    <span class="contact-link-label">Profile →</span>
+                </a>
+                <a href="mailto:hello@isen.dev" class="contact-link">
+                    <span class="contact-link-icon">✉️</span>
+                    <span>Email</span>
+                    <span class="contact-link-label">Say hello →</span>
+                </a>
+            </div>
+        </div>
+        <form class="contact-form" id="contact-form">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" placeholder="Your name" required/>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" placeholder="your@email.com" required/>
+            </div>
+            <div class="form-group">
+                <label for="msg">Message</label>
+                <textarea id="msg" placeholder="What's on your mind?" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary" style="align-self:flex-start;">Send Message</button>
+            <p id="form-status" style="font-family:'DM Mono',monospace;font-size:.78rem;color:var(--accent);display:none;">✓ Message sent!</p>
+        </form>
+    </div>
+</section>
+
+<style>
+    .contact-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 48px;
+        align-items: start;
+    }
+
+    .contact-info p {
+        color: var(--muted);
+        font-size: 1rem;
+        line-height: 1.75;
+        margin-bottom: 32px;
+    }
+
+    .contact-links {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .contact-link {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        padding: 16px 20px;
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        text-decoration: none;
+        color: var(--text);
+        font-size: .9rem;
+        transition: all .2s;
+    }
+
+    .contact-link:hover { border-color: var(--accent); color: var(--accent); transform: translateX(4px); }
+    .contact-link-icon { font-size: 1.1rem; }
+    .contact-link-label { font-family: 'DM Mono', monospace; font-size: .75rem; color: var(--muted); margin-left: auto; }
+
+    .contact-form {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .form-group { display: flex; flex-direction: column; gap: 8px; }
+
+    label {
+        font-family: 'DM Mono', monospace;
+        font-size: .72rem;
+        color: var(--muted);
+        letter-spacing: .08em;
+        text-transform: uppercase;
+    }
+
+    input, textarea {
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 14px 16px;
+        color: var(--text);
+        font-family: 'DM Sans', sans-serif;
+        font-size: .95rem;
+        outline: none;
+        transition: border-color .2s;
+        resize: vertical;
+    }
+
+    input:focus, textarea:focus { border-color: var(--accent); box-shadow: 0 0 0 3px #7cffd410; }
+    textarea { min-height: 120px; }
+
+    @media (max-width: 768px) {
+        .contact-grid { grid-template-columns: 1fr; }
+    }
+</style>
+
+<script>
+    const form = document.getElementById('contact-form') as HTMLFormElement;
+    const status = document.getElementById('form-status');
+    
+    if (form) {
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const btn = form.querySelector('button');
+            if (btn) {
+                btn.textContent = 'Sending...';
+                (btn as HTMLButtonElement).disabled = true;
+                
+                setTimeout(() => {
+                    btn.textContent = 'Send Message';
+                    (btn as HTMLButtonElement).disabled = false;
+                    if (status) status.style.display = 'block';
+                    form.reset();
+                    setTimeout(() => {
+                        if (status) status.style.display = 'none';
+                    }, 3000);
+                }, 1200);
+            }
+        });
+    }
+</script>

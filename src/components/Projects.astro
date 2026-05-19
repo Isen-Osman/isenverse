@@ -1,0 +1,98 @@
+---
+const projects = [
+    {
+        num: '01',
+        title: 'Financial Tracker',
+        desc: 'A full-featured personal finance application to track income, expenses and investment performance. Clean dashboard with real-time charts and category breakdowns.',
+        tags: ['React', 'Tailwind CSS', 'JavaScript']
+    },
+    {
+        num: '02',
+        title: 'CI/CD Pipeline',
+        desc: 'Automated deployment pipeline using GitHub Actions — linting, Docker image building, pushing to Docker Hub, and deploying to GitHub Pages in a single workflow.',
+        tags: ['Docker', 'GitHub Actions', 'DevOps']
+    },
+    {
+        num: '03',
+        title: 'Trading Strategy Research',
+        desc: 'Experimenting with algorithmic trading strategies using TradingView Pine Script — S/R breakouts, RSI filters, ATR-based risk management, and real market testing on IC Markets.',
+        tags: ['Pine Script', 'TradingView', 'Fintech']
+    }
+];
+---
+<section id="projects">
+    <div class="section-label">What I've built</div>
+    <h2>Featured<br/>Projects</h2>
+    <div class="projects-grid reveal">
+        {projects.map(project => (
+            <div class="project-card">
+                <div class="project-num">{project.num}</div>
+                <div class="project-title">{project.title}</div>
+                <p class="project-desc">{project.desc}</p>
+                <div class="project-tags">
+                    {project.tags.map(tag => (
+                        <span class="tag">{tag}</span>
+                    ))}
+                </div>
+            </div>
+        ))}
+    </div>
+</section>
+
+<style>
+    .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 24px;
+    }
+
+    .project-card {
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        padding: 32px;
+        transition: all .25s;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .project-card:hover { border-color: var(--accent2); transform: translateY(-6px); box-shadow: 0 20px 60px #4f8eff10; }
+
+    .project-num {
+        font-family: 'DM Mono', monospace;
+        font-size: .7rem;
+        color: var(--muted);
+        letter-spacing: .1em;
+    }
+
+    .project-title {
+        font-family: 'Syne', sans-serif;
+        font-weight: 700;
+        font-size: 1.25rem;
+        letter-spacing: -.01em;
+    }
+
+    .project-desc {
+        color: var(--muted);
+        font-size: .9rem;
+        line-height: 1.65;
+        flex: 1;
+    }
+
+    .project-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .tag {
+        font-family: 'DM Mono', monospace;
+        font-size: .68rem;
+        letter-spacing: .06em;
+        padding: 4px 10px;
+        border-radius: 4px;
+        border: 1px solid var(--line);
+        color: var(--muted);
+    }
+</style>

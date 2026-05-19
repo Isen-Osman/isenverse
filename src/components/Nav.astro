@@ -1,0 +1,60 @@
+---
+---
+<nav>
+    <a href="#hero" class="logo">IS<span>.</span></a>
+    <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+</nav>
+
+<style>
+    nav {
+        position: fixed;
+        top: 0; left: 0; right: 0;
+        z-index: 100;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 20px 48px;
+        border-bottom: 1px solid var(--line);
+        background: linear-gradient(to bottom, var(--bg) 60%, transparent);
+        backdrop-filter: blur(12px);
+    }
+
+    .logo {
+        font-family: 'Syne', sans-serif;
+        font-weight: 800;
+        font-size: 1.2rem;
+        letter-spacing: -0.02em;
+        color: var(--text);
+        text-decoration: none;
+    }
+
+    .logo span { color: var(--accent); }
+
+    nav ul {
+        display: flex;
+        gap: 36px;
+        list-style: none;
+    }
+
+    nav a {
+        font-family: 'DM Mono', monospace;
+        font-size: .78rem;
+        color: var(--muted);
+        text-decoration: none;
+        letter-spacing: .08em;
+        text-transform: uppercase;
+        transition: color .2s;
+    }
+
+    nav a:hover { color: var(--accent); }
+
+    @media (max-width: 768px) {
+        nav { padding: 16px 24px; }
+        nav ul { gap: 20px; }
+    }
+</style>

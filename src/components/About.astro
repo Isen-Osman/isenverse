@@ -1,0 +1,103 @@
+---
+---
+<section id="about">
+    <div class="section-label">About me</div>
+    <h2>Engineer &amp; <br/>Fintech Thinker</h2>
+
+    <div class="about-grid reveal">
+        <div class="about-text">
+            <p>
+                I'm a software engineering student focused on building practical skills in modern web development and financial technology. I work primarily with <strong class="highlight">React</strong> and <strong class="highlight">Tailwind CSS</strong>, turning ideas into real, functional applications with clean UI and solid structure.
+            </p>
+            <p>
+                Alongside software, I'm actively learning <strong class="highlight">trading and investing</strong> — experimenting with real market conditions on platforms like IC Markets. My goal is to become highly skilled in building scalable applications while combining technical knowledge with financial literacy.
+            </p>
+        </div>
+        <div class="learning-container">
+            <div class="section-label" style="margin-bottom:8px;">Currently focused on</div>
+            <div class="learning-grid">
+                <div class="learning-item">
+                    <div class="learning-dot"></div>
+                    <div class="learning-text"><strong>Frontend Dev</strong><br/>React, UI/UX design</div>
+                </div>
+                <div class="learning-item">
+                    <div class="learning-dot secondary"></div>
+                    <div class="learning-text"><strong>Web Deployment</strong><br/>GitHub Actions, Docker</div>
+                </div>
+                <div class="learning-item">
+                    <div class="learning-dot tertiary"></div>
+                    <div class="learning-text"><strong>Trading Strategies</strong><br/>Passive investing, markets</div>
+                </div>
+                <div class="learning-item">
+                    <div class="learning-dot quaternary"></div>
+                    <div class="learning-text"><strong>SE Fundamentals</strong><br/>Algorithms, architecture</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .about-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 48px;
+        align-items: start;
+    }
+
+    .about-text p {
+        color: var(--muted);
+        line-height: 1.85;
+        margin-bottom: 20px;
+    }
+
+    .highlight {
+        color: var(--text);
+        font-weight: 400;
+    }
+
+    .learning-container {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .learning-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+        gap: 16px;
+    }
+
+    .learning-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 14px;
+        padding: 20px 24px;
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: 10px;
+    }
+
+    .learning-dot {
+        width: 8px; height: 8px;
+        border-radius: 50%;
+        background: var(--accent);
+        margin-top: 7px;
+        flex-shrink: 0;
+        box-shadow: 0 0 10px var(--accent);
+        animation: blink 2s ease-in-out infinite;
+    }
+
+    .learning-dot.secondary { background: var(--accent2); box-shadow: 0 0 10px var(--accent2); }
+    .learning-dot.tertiary { background: var(--accent3); box-shadow: 0 0 10px var(--accent3); }
+    .learning-dot.quaternary { background: #a78bfa; box-shadow: 0 0 10px #a78bfa; }
+
+    @keyframes blink { 0%,100%{opacity:1}50%{opacity:.3} }
+
+    .learning-text { font-size: .9rem; color: var(--muted); line-height: 1.5; }
+    .learning-text strong { color: var(--text); font-weight: 400; }
+
+    @media (max-width: 768px) {
+        .about-grid { grid-template-columns: 1fr; }
+    }
+</style>
